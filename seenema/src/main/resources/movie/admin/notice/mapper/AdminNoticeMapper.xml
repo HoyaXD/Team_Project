@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.green.seenema.mapper.AdminNoticeMapper">
+   <!-- 공지사항 출력 공지사항코드 역순 -->
+   <select id="noticeView" resultType="org.green.seenema.vo.NoticeVO">
+      SELECT * FROM notice_tbl ORDER BY noticeCode DESC
+   </select>
+   
+   <!-- 공지사항 수정을 위한 선택 -->
+   <select id="noticeOneList" resultType="org.green.seenema.vo.NoticeVO">
+      SELECT * FROM notice_tbl WHERE noticeCode = #{noticeCode}
+   </select>
+   
+   <!-- 공지사항삭제-->
+   <delete id="noticeDel">
+      DELETE FROM notice_tbl WHERE noticeCode = #{noticeCode}
+   </delete>
+   
+   <!-- 공지사항 수정 -->
+   <update id="noticeEdit">
+      UPDATE notice_tbl SET title = #{title}, contents= #{contents} WHERE noticeCode= 23
+   </update>
+   <!-- 공지사항 등록 -->
+   <insert id="noticeRegi">
+      INSERT INTO notice_tbl(title, contents, regiDate, hit, importance) VALUES(#{title}, #{contents}, NOW(), 0, #{importance})
+   </insert>
+   
+   <!-- 공지사항 코드검색 -->
+   <select id="noticeCodeSearch" resultType="org.green.seenema.vo.NoticeVO">
+      SELECT * FROM notice_tbl WHERE noticeCode = #{searchCode} ORDER BY noticeCode desc
+   </select>
+   
+   <!-- 공지사항 제목검색 -->
+   <select id="noticeTitleSearch" resultType="org.green.seenema.vo.NoticeVO">
+      SELECT * FROM notice_tbl WHERE title LIKE CONCAT('%', #{searchTitle}, '%') ORDER BY noticeCode desc
+   </select>
+   
+   <!-- 공지사항 내용검색 -->
+   <select id="noticeContentsSearch" resultType="org.green.seenema.vo.NoticeVO">
+      SELECT * FROM notice_tbl WHERE contents LIKE CONCAT('%', #{searchContents}, '%') ORDER BY noticeCode desc
+   </select>
+   
+    <!-- 공지사항 갯수 구하기 -->
+   <select id="noticeCount" resultType="int">
+   		SELECT COUNT(*) FROM notice_tbl
+   </select>
+   
+   <!-- 공지사항 제목 검색 갯수 구하기 -->
+   <select id="noticeTitleCount" resultType="int">
+      SELECT COUNT(*) FROM notice_tbl WHERE title LIKE CONCAT('%', #{searchTitle}, '%')
+   </select>
+   
+   <!-- 공지사항 내용 검색 갯수 구하기 -->
+   <select id="noticeContentsCount" resultType="int">
+      SELECT COUNT(*) FROM notice_tbl WHERE contents LIKE CONCAT('%', #{searchContents}, '%')
+   </select>
+   
+   
+   
+
+</mapper>

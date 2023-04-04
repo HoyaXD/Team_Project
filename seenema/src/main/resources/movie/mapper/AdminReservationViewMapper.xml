@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="org.green.seenema.mapper.AdminReservationViewMapper">
+
+	<select id="reservationMainView" resultType="java.util.Map">
+		SELECT theaterPlace, COUNT(*) as total_count FROM reservation_tbl WHERE
+		movieDate = CURDATE()
+		GROUP BY theaterPlace ORDER BY total_count DESC
+		LIMIT 0, 6;
+	</select>
+
+	<!-- 관리자가 예매내역 보기 -->
+	<select id="reservationAllView"
+		resultType="org.green.seenema.vo.ReservationVO">
+		SELECT * From reservation_tbl ORDER BY ticketCode desc
+		LIMIT #{start}, 10
+	</select>
+	<select id="reservationAllCount" resultType="int">
+		SELECT COUNT(*) From reservation_tbl ORDER BY ticketCode DESC
+	</select>
+
+	<!-- 검색시 실행 -->
+	<select id="reservationId"
+		resultType="org.green.seenema.vo.ReservationVO">
+		SELECT * From reservation_tbl WHERE id LIKE CONCAT('%', #{searchKeyword},
+		'%') ORDER BY ticketCode DESC LIMIT #{start}, 10
+	</select>
+
+	<select id="reservationIdCount" resultType="int">
+		SELECT COUNT(*) From reservation_tbl WHERE id LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC
+	</select>
+
+	<select id="reservationCode"
+		resultType="org.green.seenema.vo.ReservationVO">
+		SELECT * From reservation_tbl WHERE ticketCode LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC LIMIT #{start}, 10
+	</select>
+
+	<select id="reservationCodeCount" resultType="int">
+		SELECT COUNT(*) From reservation_tbl WHERE ticketCode LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC
+	</select>
+
+	<select id="reservationTitle"
+		resultType="org.green.seenema.vo.ReservationVO">
+		SELECT * From reservation_tbl WHERE movieTitle LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC LIMIT #{start}, 10
+	</select>
+	<select id="reservationTitleCount" resultType="int">
+		SELECT COUNT(*) From reservation_tbl WHERE movieTitle LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC
+	</select>
+
+	<select id="reservationDate"
+		resultType="org.green.seenema.vo.ReservationVO">
+		SELECT * From reservation_tbl WHERE movieDate LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC LIMIT #{start}, 10
+	</select>
+
+	<select id="reservationDateCount" resultType="int">
+		SELECT COUNT(*) From reservation_tbl WHERE movieDate LIKE CONCAT('%',
+		#{searchKeyword}, '%') ORDER BY ticketCode DESC
+	</select>
+
+	<select id="reservationMainViewCount" resultType="java.util.Map">
+		SELECT movieTitle, COUNT(*) as total_count FROM reservation_tbl WHERE
+		movieDate = CURDATE()
+		GROUP BY movieTitle ORDER BY total_count DESC
+		LIMIT 0, 6;
+	</select>
+
+</mapper>
+
+
+

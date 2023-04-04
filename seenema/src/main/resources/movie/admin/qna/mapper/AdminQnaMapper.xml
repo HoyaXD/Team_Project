@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 관리자 QnA -->
+<mapper namespace="org.green.seenema.mapper.AdminQnaMapper">
+	<!-- QnA 목록출력 -->
+	<select id="qnaListView" resultType="org.green.seenema.vo.QnaVO">
+		SELECT
+		qcode,
+		id,
+		title,
+		contents,
+		regiDate,
+		fileName,
+		CASE
+		WHEN status = 1 THEN '답변완료'
+		ELSE '답변대기'
+		END AS status,
+		answer
+		FROM qna_mtbl ORDER BY qcode desc
+	</select>
+
+	<!-- QnA목록 모달창에 출력 -->
+	<select id="qnaOneList" resultType="org.green.seenema.vo.QnaVO">
+		SELECT * FROM qna_mtbl WHERE
+		qcode = #{qcode}
+	</select>
+
+	<!-- 아이디로 회원 검색 -->
+	<select id="qnaIdSearch" resultType="org.green.seenema.vo.QnaVO">
+		SELECT * FROM qna_mtbl WHERE
+		ID LIKE CONCAT('%', #{searchId}, '%') ORDER BY
+		qcode desc
+	</select>
+
+	<!-- 이름로 회원 검색 -->
+	<select id="qnaTitleSearch"
+		resultType="org.green.seenema.vo.QnaVO">
+		SELECT * FROM qna_mtbl WHERE title LIKE CONCAT('%',
+		#{searchTitle}, '%')
+		ORDER BY qcode desc
+	</select>
+
+	<!-- 등급로 회원 검색 -->
+	<select id="qnaContentsSearch"
+		resultType="org.green.seenema.vo.QnaVO">
+		SELECT * FROM qna_mtbl WHERE contents LIKE CONCAT('%',
+		#{searchContents},
+		'%') ORDER BY qcode desc
+	</select>
+
+	<!-- 리플 갯수 구하기 -->
+	<select id="qnaCount" resultType="int">
+		SELECT COUNT(*) FROM qna_mtbl
+	</select>
+
+	<!-- 리플 아이디 갯수 -->
+	<select id="qnaIdCount" resultType="int">
+		SELECT COUNT(*) FROM qna_mtbl
+		WHERE id LIKE CONCAT('%', #{searchId},'%')
+	</select>
+
+	<!-- 리플 영화코드 갯수 -->
+	<select id="qnaTitleCount" resultType="int">
+		SELECT COUNT(*) FROM
+		qna_mtbl WHERE title LIKE CONCAT('%', #{searchTitle}, '%')
+	</select>
+
+	<!-- 리플 별점으로 갯수 -->
+	<select id="qnaContentsCount" resultType="int">
+		SELECT COUNT(*) FROM
+		qna_mtbl WHERE contents LIKE CONCAT('%', #{searchContents}, '%')
+	</select>
+
+	<!-- 메인화면에 보여줄 최근에 올라온 qna 3개 -->
+	<select id="qnaMainView" resultType="org.green.seenema.vo.QnaVO">
+		SELECT * FROM qna_mtbl ORDER
+		BY qcode desc limit 0, 6
+	</select>
+
+	<!-- 관리자가 답변하면 고객 문의 글에 저장 -->
+	<update id="qnaAdminAnswer">
+		UPDATE qna_mtbl SET answer = #{updateContents},
+		status = 1 WHERE qcode = #{updateCode}
+	</update>
+
+
+</mapper>

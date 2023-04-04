@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.green.seenema.mapper.ProductSalesMapper">
+
+	<select id="monthTotalPirce"
+		resultType="org.green.seenema.vo.ProductSalesVO">
+		SELECT DATE_FORMAT(orderDate, '%m') AS Month, SUM(price) AS
+		totalPrice
+		FROM order_tbl WHERE orderDate BETWEEN '2023-01-01' AND
+		'2023-12-31'
+		GROUP BY Month
+	</select>
+
+	<select id="productTotalView"
+		resultType="org.green.seenema.vo.ProductSalesVO">
+		SELECT SUM(o.count) as total_count, SUM(o.price) as
+		totalPrice,
+		p.productName FROM order_tbl o JOIN product_tbl p ON
+		o.productCode = p.productCode
+		WHERE o.status = '1'
+		GROUP BY
+		o.productCode, p.productName ORDER BY total_count DESC;
+	</select>
+
+
+	<!-- 성별간 삼품의 판매개수를 출력 -->
+
+	<!-- 남자 -->
+	<select id="productManView"
+		resultType="org.green.seenema.vo.ProductSalesVO">
+		SELECT
+		DATE_FORMAT(orderDate, '%Y-%m') AS month,
+		member_tbl.gender,
+		SUM(order_tbl.count) AS total_count,
+		SUM(order_tbl.price * order_tbl.count) AS total_price
+		FROM
+		order_tbl
+		INNER JOIN product_tbl ON order_tbl.productCode =
+		product_tbl.productCode
+		INNER JOIN member_tbl ON order_tbl.id =
+		member_tbl.id
+		WHERE member_tbl.gender = '남자'
+		GROUP BY
+		month,
+		member_tbl.gender
+		ORDER BY
+		month,
+		member_tbl.gender
+	</select>
+
+	<!-- 여자 -->
+	<select id="productWomanView"
+		resultType="org.green.seenema.vo.ProductSalesVO">
+		SELECT
+		DATE_FORMAT(orderDate, '%Y-%m') AS month,
+		member_tbl.gender,
+		SUM(order_tbl.count) AS total_count,
+		SUM(order_tbl.price * order_tbl.count) AS total_price
+		FROM
+		order_tbl
+		INNER JOIN product_tbl ON order_tbl.productCode =
+		product_tbl.productCode
+		INNER JOIN member_tbl ON order_tbl.id =
+		member_tbl.id
+		WHERE member_tbl.gender = '여자'
+		GROUP BY
+		month,
+		member_tbl.gender
+		ORDER BY
+		month,
+		member_tbl.gender
+	</select>
+
+	<!-- 월간 총 합산 -->
+	<select id="genderTotalPriceView"
+		resultType="org.green.seenema.vo.ProductSalesVO">
+		SELECT
+		DATE_FORMAT(orderDate, '%Y-%m') AS month,
+		SUM(order_tbl.count) AS total_count,
+		SUM(order_tbl.price *
+		order_tbl.count) AS totalPrice
+		FROM
+		order_tbl
+		INNER JOIN product_tbl ON
+		order_tbl.productCode = product_tbl.productCode
+		INNER JOIN member_tbl
+		ON order_tbl.id = member_tbl.id
+		GROUP BY
+		month
+		ORDER BY
+		month
+	</select>
+
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 관리자 QnA -->
+<mapper namespace="org.green.seenema.mapper.AdminReplyMapper">
+	<!-- QnA 목록출력 -->
+	<select id="replyListView"
+		resultType="org.green.seenema.vo.ReplyVO">
+		<!-- SELECT * FROM reply_tbl ORDER BY replyCode desc -->
+		SELECT r.replyCode, r.id, r.comment, r.rate, r.regDate, r.movieCode,
+		m.movieTitle
+		FROM reply_tbl r
+		INNER JOIN movie_tbl m ON r.movieCode = m.movieCode
+		ORDER BY replyCode desc;
+	</select>
+
+	<!-- 아이디로 한줄평 검색 -->
+	<select id="replyLIdSearch"
+		resultType="org.green.seenema.vo.ReplyVO">
+		SELECT r.replyCode, r.id, r.comment, r.rate, r.regDate, r.movieCode,
+		m.movieTitle
+		FROM reply_tbl r
+		INNER JOIN movie_tbl m ON r.movieCode = m.movieCode WHERE ID LIKE CONCAT('%',
+		#{searchId}, '%') ORDER BY
+		replyCode desc
+	</select>
+
+	<!-- 영화코드로 한줄평 검색 -->
+	<select id="replyMovieCodeSearch"
+		resultType="org.green.seenema.vo.ReplyVO">
+		SELECT r.replyCode, r.id, r.comment, r.rate, r.regDate, r.movieCode,
+		m.movieTitle
+		FROM reply_tbl r
+		INNER JOIN movie_tbl m ON r.movieCode = m.movieCode WHERE movieCode LIKE CONCAT('%',
+		#{searchMovieCode},
+		'%') ORDER BY replyCode desc
+	</select>
+
+	<!-- 별점으로 한줄평 검색 -->
+	<select id="replyRateSearch"
+		resultType="org.green.seenema.vo.ReplyVO">
+		SELECT r.replyCode, r.id, r.comment, r.rate, r.regDate, r.movieCode,
+		m.movieTitle
+		FROM reply_tbl r
+		INNER JOIN movie_tbl m ON r.movieCode = m.movieCode WHERE rate LIKE CONCAT('%',
+		#{searchRate}, '%')
+		ORDER BY replyCode desc
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="replyDel">
+		DELETE FROM reply_tbl WHERE replyCode = #{replyCode}
+	</delete>
+
+	<!-- 리플 갯수 구하기 -->
+	<select id="replyCount" resultType="int">
+		SELECT COUNT(*) FROM
+		reply_tbl
+	</select>
+
+	<!-- 리플 아이디 갯수 -->
+	<select id="replyIdCount" resultType="int">
+		SELECT COUNT(*) FROM
+		reply_tbl WHERE id LIKE CONCAT('%', #{searchId},'%')
+	</select>
+
+	<!-- 리플 영화코드 갯수 -->
+	<select id="replymovieCodeCount" resultType="int">
+		SELECT COUNT(*) FROM
+		reply_tbl WHERE movieCode LIKE CONCAT('%', #{searchMovieCode}, '%')
+	</select>
+
+	<!-- 리플 별점으로 갯수 -->
+	<select id="replyRateCount" resultType="int">
+		SELECT COUNT(*) FROM
+		reply_tbl WHERE rate LIKE CONCAT('%', #{searchRate}, '%')
+	</select>
+
+	<!-- 메인페이지에 최근 리플 3개 보여줌 -->
+	<select id="replyMainView" resultType="org.green.seenema.vo.ReplyVO">
+		SELECT r.replyCode, r.id, r.comment, r.rate, r.regDate,
+		r.movieCode, m.movieTitle
+		FROM reply_tbl r
+		INNER JOIN movie_tbl m ON r.movieCode = m.movieCode ORDER BY replyCode desc
+		LIMIT 0,8;
+	</select>
+
+
+</mapper>

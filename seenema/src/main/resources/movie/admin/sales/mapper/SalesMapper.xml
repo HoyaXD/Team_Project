@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.green.seenema.mapper.SalesMapper">
+	<!-- 영화 예매율 높은 순으로 조회 -->
+	<select id="getMovieSales" resultType="org.green.seenema.vo.ReservationVO">
+		SELECT movieCode, movieTitle, sum(visitors) as visitors
+		FROM reservation_tbl
+		WHERE reservationDate LIKE #{param1} 
+		GROUP by movieTitle 
+		ORDER BY visitors DESC
+		
+	</select>
+	
+	<!-- 영화 예매율 높은 top5 조회 -->
+	<select id="getMovieTopfive" resultType="org.green.seenema.vo.ReservationVO">
+		SELECT movieCode, movieTitle, sum(visitors) as visitors
+		FROM reservation_tbl 
+		WHERE reservationDate LIKE #{param1} 
+		GROUP by movieTitle 
+		ORDER BY visitors DESC 
+		LIMIT 5
+	</select>
+	
+	<!-- 전체 영화 예매량 -->
+	<select id="getAllMovieCnt" resultType="int">
+		SELECT sum(visitors) as visitors
+		FROM reservation_tbl 
+		WHERE reservationDate LIKE #{param1} 
+	</select>
+	
+	<!-- 영화관별 관객수top5-->
+	<select id="getTheaterTopfive" resultType="TheaterSalesVO">
+		SELECT tt.theaterCode, rt.theater, sum(rt.visitors) as visitors
+		FROM reservation_tbl rt, theater_tbl tt
+		WHERE rt.reservationDate LIKE #{param1} and tt.theaterName = rt.theater
+		GROUP BY rt.theater
+		ORDER BY visitors DESC 
+		LIMIT 5
+	</select>
+	
+	<!-- 성별별 예매율 -->
+	<select id="genderReservedCnt" resultType="MovieSalesVO">
+		SELECT count(mt.gender) as reservationCnt, rt.movieTitle, rt.movieCode
+		FROM member_tbl mt, reservation_tbl rt 
+		WHERE mt.id = rt.id and gender = #{param1} and reservationDate LIKE #{param2}
+		GROUP by rt.movieTitle 
+		ORDER BY reservationCnt DESC
+	</select>
+	
+	<select id="allGenre" resultType="MovieSalesVO">
+		SELECT mt.genre, rt.movieTitle
+		FROM movie_tbl mt, reservation_tbl rt 
+		WHERE mt.movieCode = rt.movieCode
+	</select>
+
+	
+	
+</mapper>

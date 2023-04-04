@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 관리자가 회원 관리 -->  
+<mapper namespace="org.green.seenema.mapper.MgmtMapper">
+
+	<!-- 전체 회원 목록 출력 -->
+	<select id="memberView" resultType="org.green.seenema.vo.MemberVO">
+		SELECT * FROM member_tbl
+	</select>
+	<!-- 1명 회원 삭제 -->
+	<delete id="memberDel">
+		DELETE FROM member_tbl WHERE id = #{id} 
+	</delete>
+	<!-- 1명의 회원 목록 출력 -->
+	<select id="oneMemList" resultType="org.green.seenema.vo.MemberVO">
+		SELECT * FROM member_tbl WHERE ID = #{userid}
+	</select>
+	
+	<!-- 1명 회원 목록 수정 -->
+	<update id="editInfo">
+        UPDATE member_tbl SET pw = #{pw}, name = #{name}, tel = #{tel}, gender = #{gender}, birthday = #{birthday}, grade = #{grade} WHERE id = #{id}
+	</update>
+	
+	<!-- 아이디로 회원 검색 -->
+	<select id="idSearch" resultType="org.green.seenema.vo.MemberVO">
+		SELECT * FROM member_tbl WHERE ID LIKE CONCAT('%', #{searchId}, '%')
+	</select>
+	
+	<!-- 이름로 회원 검색 -->
+	<select id="nameSearch" resultType="org.green.seenema.vo.MemberVO">
+		SELECT * FROM member_tbl WHERE name LIKE CONCAT('%', #{searchName}, '%')
+	</select>
+	
+	<!-- 등급로 회원 검색 -->
+	<select id="gradeSearch" resultType="org.green.seenema.vo.MemberVO">
+		SELECT * FROM member_tbl WHERE grade LIKE CONCAT('%', #{searchGrade}, '%')
+	</select>
+	
+		<!-- 전체 회원 갯수 -->
+	<select id="memberCount" resultType="int">
+		SELECT COUNT(*) FROM member_tbl
+	</select>
+	<!-- 전체 회원 아이디 갯수 -->
+	<select id="memberIdCount" resultType="int">
+		SELECT COUNT(*) FROM member_tbl WHERE ID LIKE CONCAT('%', #{searchId}, '%')
+	</select>
+	<!-- 전체 회원 이름 갯수 -->
+	<select id="memberNameCount" resultType="int">
+		SELECT COUNT(*) FROM member_tbl WHERE name LIKE CONCAT('%', #{searchName}, '%')
+	</select>
+	<!-- 전체 회원 등급 갯수 -->
+	<select id="memberGradeCount" resultType="int">
+		SELECT COUNT(*) FROM member_tbl WHERE grade LIKE CONCAT('%', #{searchGrade}, '%')
+	</select>
+	
+
+	
+</mapper>

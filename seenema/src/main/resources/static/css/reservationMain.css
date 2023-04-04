@@ -1,0 +1,138 @@
+*{
+    margin: 0 auto;
+}
+.box{
+    /*width: 1300px;*/
+}
+
+#reservationMain{
+    margin-top: 50px;
+    display: grid;
+    width: 1300px;
+    grid-template-columns: 350px 350px 150px 450px;
+    place-items: center;
+}
+
+.item{
+    border: solid 3px #d3cfcf;
+    width: 100%;
+    height: 600px;
+    background-color: #e8e5dd;
+    margin: 0 auto;
+}
+
+.listMenu{
+    width: 100%;
+    background-color: #333333;
+    text-align: center;
+    color: #f0f0f0;
+    height: 33px;
+    line-height: 33px;
+
+}
+.movieListView{
+    display: block;
+}
+.movieListView {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 567px;
+}
+
+.movieListView::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+}
+.movieListView::-webkit-scrollbar-thumb {
+    background: #a4a4a2; /* 스크롤바의 색상 */
+    height: 3px;
+    border-radius: 10px;
+}
+.movieListView::-webkit-scrollbar-track {
+    background-color: #e8e5dd;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.theaterListView{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.theaterItems{
+    width: 100%;
+}
+.movie img{
+    width: 25px;
+    height: 25px;
+}
+.theaterItems{
+    height: 40px;
+    line-height: 40px;
+}
+.movieTitle {
+    width: 150px;
+    position: relative;
+    bottom: 5px;
+    cursor: pointer;
+}
+.place{
+    background-color: #dedad2;
+    cursor: pointer;
+}
+#timeList{
+    margin: 0 auto;
+
+}
+.time{
+    display: inline-block;
+    width: 130px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: solid 1px #d5d4d2;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 567px;
+}
+
+.calendar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+}
+.calendar::-webkit-scrollbar-thumb {
+    background: #a4a4a2; /* 스크롤바의 색상 */
+    height: 3px;
+    border-radius: 10px;
+}
+.calendar::-webkit-scrollbar-track {
+    background-color: #e8e5dd;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.calendar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar li {
+    display: block;
+    margin-bottom: 10px;
+}
+.time{
+    display: none;
+}
+#hidden{
+    width: 1300px;
+    text-align: right;
+}

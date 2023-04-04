@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+.container{
+	width: 1300px;
+	margin: 0 auto;
+}
+
+#itemList{
+	margin: 20px 0;
+	border-top: 3px solid black;
+	text-align: center;
+	min-height: 552px;
+	max-height: 552px;
+}
+
+/* 리스트 컬럼 */
+.listHead{
+	display: flex;
+	background-color: #f0f0f0;
+	height: 50px;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 50px;
+	text-align: center;
+}
+.listHead > div:nth-child(1){
+	width: 18%;
+	color: gray;
+}
+.listHead > div:nth-child(3){
+	width: 22%;
+	color: gray;
+}
+.listHead > div:nth-child(2),
+.listHead > div:nth-child(4),
+.listHead > div:nth-child(5)
+{
+	width: 20%;
+	color: gray;
+}
+#emptyListWrap{
+	line-height: 500px;
+	color: gray;
+	border-bottom: 1px solid gray;
+	margin-bottom: 10px;
+	min-height: 500px;
+}
+
+.item{
+	display: flex;
+	width: 900px;
+	height: 50px;
+	border-bottom: 1px solid gray;
+}
+.item > div:nth-child(1){
+	font-size: 15px;
+	width: 18%;
+	line-height: 50px;
+}
+
+.item > div:nth-child(3){
+	font-size: 15px;
+	width: 22%;
+	line-height: 50px;
+}
+
+.item > div:nth-child(2),
+.item > div:nth-child(4),
+.item > div:nth-child(5){
+	font-size: 15px;
+	width: 20%;
+	line-height: 50px;
+}
+.orderDate{
+	color: gray;
+}
+.productName{
+	font-weight: bold;
+}
+.useable{
+	color: rgb(0, 189, 44);
+}
+.unUseable{
+	color: #e80000;
+}
+
+.myOrderListTitle{
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+#totalCountWrap{
+	font-weight: bold;
+	margin-top: 20px;
+	display: flex;
+}
+
+#totalCountWrap > span:nth-child(1){
+	padding-right: 5px;
+	margin-left: auto;
+}
+
+.buyListWrap{
+	width: 900px;
+	margin: 20px auto;
+	max-height: 916px;
+}
+
+.searchBarWrap{
+	height: 200px;
+	border: 1px solid black;
+	margin-top: 20px;
+	background-color: #f7f7f7;
+}
+#date{
+	width: 200px;
+	height: 40px;
+}
+#searchContentChoice{
+	padding: 20px 50px 0 50px;
+	margin: 20px 0;
+}
+.calendar{
+	padding-left: 50px;
+}
+
+#searchContentChoice > span{
+	padding-right: 10px;
+	margin-right: 5px;
+	border-right: 2px solid gainsboro;
+	font-weight: bold;
+}
+#searchContentChoice > button.on{
+	width: 70px;
+	height: 25px;
+	cursor: pointer;
+	border: none;
+	background-color: #4d4d4d;
+	color: white;
+}
+.grayBtn{
+	width: 70px;
+	height: 25px;
+	cursor: pointer;
+	border: none;
+	padding: 0 5px;
+	border: 2px solid #7b7b7b;
+	background-color: #f7f7f7;
+	color: #7b7b7b;
+	font-weight: bold;
+}
+
+
+#searchDateChoice{
+	padding: 0 50px 0 50px;
+	margin: 20px 0;
+}
+#searchDateChoice > button.on{
+	width: 70px;
+	height: 25px;
+	cursor: pointer;
+	border: none;
+	background-color: #4d4d4d;
+	color: white;
+}
+
+#searchDateChoice > span{
+	padding-right: 10px;
+	margin-right: 5px;
+	border-right: 2px solid gainsboro;
+	font-weight: bold;
+}
+
+#productNotice{
+	color: gray;
+}
+
+#right{
+	margin-left: auto;
+}
+#right > span:nth-child(1){
+	padding-right: 5px;
+}
+
+
+.calendar > span:nth-child(1){
+	padding-right: 10px;
+	margin-right: 5px;
+	border-right: 2px solid gainsboro;
+	font-weight: bold;
+}
+
+#datepicker1,
+#datepicker2
+{
+	width: 150px;
+	height: 30px;
+	color: gray;
+	padding-left: 30px;
+	outline: none;
+	border: none;
+	border: 2px solid #7b7b7b;
+	font-weight: bold;
+	user-select: none;
+	/* cursor: pointer; */
+	/* background-image: url('/images/calendar.gif');
+	background-repeat: no-repeat;
+	background-position: right center; */
+}
+
+#img{
+	display:inline-block;
+	position: relative;
+	top: 11px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid black;
+	background-image: url('/images/calendar.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+	cursor: pointer;
+	user-select: none;
+}
+.ui-datepicker-prev,
+.ui-datepicker-next
+{
+	cursor: pointer;
+}
+#searchBtn{
+	width: 60px;
+	height: 30px;
+	text-align: center;
+	color: white;
+	outline: none;
+	border: none;
+	background-color: #3d3d3b;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#member_top{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1000px;
+    display: flex;
+    height: 180px;
+    background-color: #e8e5dd;
+}
+#sel_menu{
+    margin: 0 auto;
+    width: 1000px;
+    height: 50px;
+    border-top: solid 1px gray;
+    border-right: solid 1px gray;
+    border-left: solid 1px gray;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 333px 333px 333px;
+    margin-bottom: 20px;
+}
+.menu_option{
+    margin: 0 auto;
+    line-height: 50px;
+    width: 333px;
+    text-align: center;
+    border-bottom: solid 1px gray;
+}
+#option_center{
+    margin: 0 auto;
+    border-right: solid 1px #e3dcdc;
+    border-left: solid 1px #e3dcdc;
+}
+#option_right{
+    margin: 0 auto;
+    border-right: solid 1px gray;
+}
+#member_img{
+    margin: 0 auto;
+    width: 150px;
+    float: left;
+}
+#member_img img{
+    float: left;
+    margin-top: 25px;
+    width: 130px;
+    height: 130px;
+}
+
+.member_info{
+    margin: 0 auto;
+    width: 400px;
+    margin-top: 50px;
+    font-size: 24px;
+}
+#memberName{
+    margin: 0 auto;
+    font-size: 36px;
+    margin-right: 15px;
+}
+#memberId{
+    margin: 0 auto;
+    color: #808080;
+}
+#option_center{
+    margin: 0 auto;
+    background-color: #5c5c5c;
+    color: white;
+}
+
+footer p{
+	color: white;
+}
+.beforeAfterWrap{
+	width: 550px; 
+	/* border: 1px solid gainsboro; */
+	display: flex;
+	font-size: 12px;
+	margin: 10px auto;
+}
+.pageCount{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 0.1px solid gainsboro;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 13px;
+}
+.noBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 0.1px solid gainsboro;
+	font-weight: bold;
+	color: gainsboro;
+	user-select: none;
+}
+.prevBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 0.1px solid gainsboro;
+	font-weight: bold;
+	cursor: pointer;
+}
+.nextBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 0.1px solid gainsboro;
+	font-weight: bold;
+	cursor: pointer;
+}

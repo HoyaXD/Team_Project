@@ -1,0 +1,609 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	color: black;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+}
+.container{
+	width: 1300px;
+	margin: 0 auto;
+}
+
+main{
+	width: 800px;
+	margin: 30px auto;
+	/* border: 1px solid blue; */
+	padding: 10px;
+}
+.movieInfoWrap{
+	display: flex;
+	padding-bottom: 20px;
+	border-bottom: 1px solid gainsboro;
+	/* padding: 10px; */
+}
+.movieImage{
+	width: 20%;
+	height: 200px;
+	/* border: 1px solid black; */
+}
+.movieImage > img{
+	width: 155px;
+	height: 200px;
+}
+.movieInfo{
+	width: 80%;
+	padding: 10px;
+}
+.movieTitle{
+	display: flex;
+}
+.movieTitle > #title{
+	/* border: 1px solid red; */
+	font-weight: bold;
+	font-size: 20px;
+	margin-right: 15px;
+}
+
+#titleReservationStatus{
+	color: brown;
+	border: 1px solid brown;
+	font-size: 9px;
+	padding: 5px;
+	margin-right: 15px;
+}
+
+#titleDday{
+	color: red;
+	border: 1px solid red;
+	font-size: 9px;
+	padding: 5px;
+}
+
+.movieEnglishTitle{
+	color: gray;
+	font-size: 10px;
+}
+
+.reservationRate{
+	color: gray;
+	font-size: 15px;
+	margin-top: 10px;
+	width: 100%;
+	border-bottom: 1px solid gainsboro;
+}
+
+.director_ActorInfoWrap{
+	padding-top: 10px;
+	font-size: 13px;
+	margin-bottom: 30px;
+	
+}
+.director_ActorInfoWrap > div{
+	margin: 5px 0;
+}
+.movieContent{
+	margin-top: 10px;
+	padding: 10px;
+	/* border: solid 1px green; */
+	background-color: #5c5753;
+}
+
+.tabMenu {
+  	display: flex;
+}
+
+.tabMenu .item {
+	flex: 1;
+	text-align: center;
+	position: relative; /* 아래 border를 위한 relative 설정 */
+}
+
+.item > a{
+	padding: 10px 10px;
+	color: white;
+	font-weight: bold;
+}
+
+.tabMenu .item:not(.last)::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 1px;
+	background-color: #ccc;
+}
+
+.replySection{
+	margin-top: 10px;
+}
+#replyTopWrap{
+	display: flex;
+	height: 30px;
+	margin-bottom: 10px;
+}
+#replySectionTitle{
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+}
+#regReplyBtn{
+	margin-left: auto;
+	width: 60px;
+	line-height: 30px;
+	background-color: #ff4d4d;
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+#replyForm{
+	border: solid 1px gainsboro;
+}
+#replyForm fieldset{
+    display: block;
+    direction: rtl;
+    text-align: right;
+    border:0;
+    user-select: none;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+#replyForm fieldset legend{
+    text-align: right;
+}
+#replyForm input[type=radio]{
+    display: none;
+}
+#replyForm label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+    cursor: pointer;
+}
+#replyForm label:hover{
+    color: #ffcc00;
+}
+#replyForm label:hover ~ label{
+    color: #ffcc00;
+}
+
+
+#replyForm input[type=radio]:checked ~ label{
+    color: #ffcc00;
+    /* text-shadow: 0 0 0 rgba(250, 208, 0, 0.99); */
+}
+
+/* 댓글 textarea */
+#comment{
+	resize: none;
+	outline: none;
+	width: 100%;
+	height: 100px;
+	text-align:left;
+	padding: 10px;
+	border: none;
+	border-top: 1px solid gainsboro;
+}
+
+/* 댓글 갯수 */
+#textWrap{
+	display: flex;
+	height: 20px;
+	font-size: 13px;
+	line-height: 20px;
+}
+#noticeComment{
+	margin-left: 10px;
+	font-weight: bold;
+	color: #e63737;
+	font-size: 10px;
+}
+.commentCount{
+	margin-left: auto;
+}
+.textTotal{
+	margin-right: 10px;
+}
+
+/* 댓글 리스트 박스 */
+.replyList{
+	width: 100%;
+	margin-top: 10px;
+	min-height: 770px;
+	border: 0.1px solid gainsboro;
+}
+
+/* 댓글 한개 박스 */
+.replyBox{
+	padding: 10px;
+	border-bottom: 0.1px solid gainsboro;
+}
+/* 별 이모티콘, 갯수 감싸는 박스 */
+.replyBoxTop{
+	display: flex;
+	font-size: 13px;
+}
+
+/* 별 이모티콘 */
+#replyStar{
+	width: 57px;
+	margin-right: 5px;
+}
+
+.star{
+	color: #ffcc00;
+}
+.unstar{
+	color: gainsboro;
+}
+
+/* 별 갯수 */
+#replyRate{
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+/* 댓글 내용 */
+#replyComment{
+	font-size: 13px;
+	margin: 5px 0;
+}
+
+.replyBoxBottom{
+	display: flex;
+	font-size: 12px;
+}
+
+#replyId{
+	color: #4a6cc2;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+#replyRegDate{
+	color: gray;
+	font-size: 5px;
+	line-height: 14.5px;
+}
+
+
+#beforeBtn{
+	width: 50px;
+	height: 30px;
+	border: 1px solid gainsboro;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+}
+
+#afterBtn{
+	margin-left: auto;
+	width: 50px;
+	height: 30px;
+	border: 1px solid gainsboro;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+}
+.btnWrap{
+	display: flex;
+	margin-left: auto;
+	user-select: none;
+}
+#updateBtn{
+	margin-right: 5px;
+	cursor: pointer;
+	color: gray;
+	/* display: none; */
+}
+
+#deleteBtn{
+	cursor: pointer;
+	color: gray;
+	/* display: none; */
+}
+
+#updateReplyBox{
+	position: fixed;
+	background-color: white;
+	margin: 0 auto;
+	left:0;
+	right:0;
+	top: 33%;
+	width: 500px;
+	height: 300px;
+	border: 3px solid black;
+	box-shadow: 0 0 30px rgb(0 0 0 / 50%);
+	display: none;
+}
+#updateReplyBoxTop{
+	height: 50px;
+	display: flex;
+}
+#updateReplyBoxTitle{
+	line-height: 50px;
+	background-color: #404040;
+	padding-left: 20px;
+	width: 100%;
+	color: white;
+}
+#closeBtn{
+	margin-left: auto;
+	width: 50px;
+	text-align: center;
+	font-size: 20px;
+	background-color: #404040;
+	color: white;
+	line-height: 50px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.updateReplyBoxWriteSection{
+	padding: 20px;
+	height: 245px;
+}
+
+#updateReplyBoxmovieTitle{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed gray;
+}
+
+
+/* 댓글 수정 박스 */
+#updateReplyForm{
+	border: solid 1px gainsboro;
+	margin-top: 20px;
+}
+#updateReplyForm fieldset{
+    display: block;
+    direction: rtl;
+    text-align: right;
+    border: 0;
+    user-select: none;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+#updateReplyForm fieldset legend{
+    text-align: right;
+}
+#updateReplyForm input[type=radio]{
+    display: none;
+}
+#updateReplyForm label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+    cursor: pointer;
+}
+#updateReplyForm label:hover{
+    color: #ffcc00;
+}
+#updateReplyForm label:hover ~ label{
+    color: #ffcc00;
+}
+
+#updateReplyForm input[type=radio]:checked ~ label{
+    color: #ffcc00;
+    /* text-shadow: 0 0 0 rgba(250, 208, 0, 0.99); */
+}
+
+/* 댓글 textarea */
+#updateReplyFormComment{
+	resize: none;
+	outline: none;
+	width: 100%;
+	height: 50px;
+	text-align:left;
+	padding: 10px;
+	border: none;
+	border-top: 1px solid gainsboro;
+}
+#updateReplyFormComment::placeholder {
+  	font-size: 13px;
+}
+/* 댓글 갯수 */
+#updateReplyFormTextWrap{
+	display: flex;
+	height: 20px;
+	font-size: 13px;
+	line-height: 20px;
+}
+#updateReplyFormNoticeComment{
+	margin-left: 10px;
+	color: blue;
+	font-size: 10px;
+}
+.updateReplyFormCommentCount{
+	margin-left: auto;
+}
+.updateReplyFormTextTotal{
+	margin-right: 10px;
+}
+
+#updateReplyDoBtn{
+	width: 30px;
+	height: 20px;
+	margin-top: 10px;
+	margin-left: auto;
+	background-color: #ff4d4d;
+	color: white;
+	text-align: center;
+	border-radius: 3px;
+	font-size: 12px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.noListBox{
+	width: 780px;
+	min-height: 773px;
+	line-height: 773px;
+	text-align: center;
+	color: gray;
+	font-weight: bold;
+	border-bottom: 1px solid gainsboro;
+}
+
+.reservBtn{
+	
+	padding: 10px 20px;
+	font-size: 15px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 20px;
+	color: white;
+	background-image: linear-gradient(to left, rgb(255, 115, 86), rgb(251, 67, 87));
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.summuryWrap{
+	/* border: 1px solid green; */
+	margin-top: 50px;
+	color: gray;
+}
+.summuryWrap > p{
+	font-size: 14px;
+	color: gray;
+}
+
+
+.trailerWrap{
+	/* border: 1px solid red; */
+	margin-top: 50px;
+}
+
+/* 버튼 wrap */
+.absoluteBtnWrap{
+	position: fixed;
+	right: 20%;
+	bottom: 10%;
+}
+
+/* 맨위로 버튼옆에 예매하기 버튼 */
+.nowReservBtn{
+	display: inline-block;
+	width: 130px;
+	line-height: 20px;
+	padding: 14px 15px;
+	text-align: center;
+	border-radius: 30px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	transition: right 0.4s;
+	background-image: linear-gradient(to left, rgb(255, 115, 86), rgb(251, 67, 87));
+	box-shadow: 3px 3px 3px gray;
+	z-index: 99;
+	user-select: none;
+}
+
+/* 맨위로 버튼 */
+.scrollTopBtn{
+	display: inline-block;
+	border: 2px solid gainsboro;
+	border-radius: 50%;
+	font-size: 30px;
+	line-height: 35px;
+	padding: 7px 15px;
+	cursor: pointer;
+	color: gray;
+	background: white;
+	box-shadow: 3px 3px 3px gray;
+	z-index: 99;
+	user-select: none;
+}
+
+.graphWrap{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	border-top: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
+	margin-top: 50px;
+}
+.chartTitle{
+	height: 50px;
+	border-bottom: 1px solid gainsboro;
+	line-height: 50px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.chartTitle:first-child{
+	border-right: 1px solid gainsboro;
+}
+#donutChartWrap{
+	border-right: 1px solid gainsboro;
+	padding-left: 60px;
+}
+
+footer p{
+	color: white;
+}
+.beforeAfterWrap{
+	width: 550px; 
+	/* border: 1px solid gainsboro; */
+	display: flex;
+	min-height: 40px;
+	font-size: 12px;
+	margin: 10px auto;
+}
+.pageCount{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 13px;
+	margin-right: 5px;
+}
+
+.noBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	color: gainsboro;
+	user-select: none;
+}
+.prevBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	cursor: pointer;
+}
+.nextBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	cursor: pointer;
+}

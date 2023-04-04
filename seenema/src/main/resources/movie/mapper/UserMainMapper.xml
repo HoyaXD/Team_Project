@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.green.seenema.user.main.mapper.UserMainMapper">
+
+	<!-- 메인 슬라이더 영화목록 가져오기 -->
+	<select id="getMainMovieList" resultType="MovieVO">
+		SELECT 
+			mt.movieCode, mt.movieTitle, mt.viewAge, mt.postFileName, mt.hit, ROUND(AVG(rt.rate),1) as avg
+		FROM seenema.reply_tbl rt RIGHT JOIN seenema.movie_tbl mt  
+		ON rt.movieCode  = mt.movieCode GROUP BY hit DESC;
+	</select>
+	
+	<!-- 영화 상세보기 정보 -->
+	<select id="getMovieDetail" resultType="MovieVO">
+		SELECT * FROM movie_tbl WHERE movieCode = #{movieCode};
+	</select>
+	
+	<!-- 스토어 상품목록 최상위 3개만 가져오기 -->
+	<select id="getStoreList" resultType="ProductVO">
+		SELECT * FROM ( 
+		   SELECT *, RANK() OVER (PARTITION BY pt.category ORDER BY pt.category DESC, pt.productName ASC) AS RN  
+		   FROM product_tbl AS pt
+		) AS ranking
+		WHERE ranking.rn <![CDATA[<=]]> 3;
+	</select>
+	
+	<select id="getMainNoticeList" resultType="NoticeVO">
+		SELECT * FROM notice_tbl ORDER BY noticeCode DESC LIMIT 0, 5;
+	</select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.green.seenema.mapper.AdminEventMapper">
+	
+	<!-- 등록 -->
+	<insert id="insertEvent">
+	INSERT INTO event_tbl (title, contents, startDate, endDate, fileName) 
+	VALUES
+	(#{title}, #{contents}, #{startDate}, #{endDate}, #{fileName})
+	</insert>
+	
+	<!-- 출력 -->
+	<select id="getEventList" resultType="org.green.seenema.vo.EventVO">
+		SELECT eventNo, title, startDate, endDate FROM event_tbl ORDER BY eventNo DESC LIMIT <!-- #{start} -->0, 10
+	</select>
+	
+	<!-- 상세출력 -->
+	<select id="getEvenetDetail" resultType="org.green.seenema.vo.EventVO">
+		SELECT * FROM event_tbl WHERE eventNO = #{eventNo}
+	</select>
+	
+	<update id="editEvent">
+		UPDATE event_tbl SET title = #{title}, fileName = #{fileName}, contents = #{contents}, 
+		startDate = #{startDate}, endDate = #{endDate} WHERE eventNo = #{eventNo}
+	</update>
+	
+	<delete id="delEvent">
+		DELETE FROM event_tbl WHERE eventNo = #{eventNo};
+	</delete>
+	
+</mapper>

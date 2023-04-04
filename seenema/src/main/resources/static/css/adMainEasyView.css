@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+.main_view {
+	float: right;
+	width: 1094px;
+	height: 1000px;
+}
+
+.main_view #doToday_menu {
+	margin-left: 56px;
+	/*  display: flex;  */
+	margin: 20px 0 0 56xp;
+	/*상 오른쪽 아래 왼쪽*/
+	width: 980px;
+	height: auto;
+}
+
+.test {
+	width: 950px;
+	height: 280px;
+	margin-right: 160px;
+	margin-bottom: 30px;
+	float: left;
+	display: inline-flex;
+}
+
+#moview1 {
+	text-align: center; width : 150px;
+	height: 275px;
+	width: 150px;
+}
+
+#moview1 div {
+	margin-top: 10px; width : 140px;
+	line-height:25px;
+	height: 120px;
+	width: 180px;
+}
+
+#moview2 {
+	text-align: center;
+	width: 150px;
+	height: 275px;
+}
+
+#moview2 div {
+	margin-top: 10px;
+	width: 180px;
+	height: 120px;
+	line-height: 25px;
+	
+}
+
+#moview3 {
+	text-align: center;
+	width: 150px;
+	height: 275px;
+}
+
+#moview3 div {
+	margin-top: 10px;
+	width: 180px;
+	height: 120px;
+		line-height:25px;
+	
+	
+}
+
+#moview4 {
+	text-align: center;
+	width: 150px;
+	height: 275px;
+}
+
+#moview4 div {
+	margin-top: 10px;
+	width: 180px;
+	height: 120px;
+		line-height:25px;
+	
+}
+
+#doToday_detail div {
+	width: 200px;
+	height: 80px;
+	padding: 20px;
+}
+#count_box{
+	
+	font-weight: 1px;
+	border: 3px solid;
+	box-shadow: 2px 2px 4px rgba(0.1, 0.1, 0.1, 0.7);
+	background-color: white;
+	border-left: none;
+	border-bottom: none;
+	border-right: none;
+}
+/* #doToday_title {
+	float: left;
+	width: 230px;
+	height: auto;
+}
+ */
+#simpleView {
+	display: flex;
+	margin-top: 30px;
+	width: 980px;
+	height: 580px;
+	margin-top: 30px;
+}
+
+#simpleView div {
+	width: 440px;
+	height: 260px;
+	border: 1px rgb(192, 192, 192) solid;
+	border-radius: 7px;
+}
+
+h4 {
+	background-color: rgb(62, 77, 89);
+	/* //margin-left: 20px; */
+	font-size: 23px;
+	color: white;
+}
+
+#sm2>#qnaView_box {
+	width: 390px;
+	height: 200px;
+	margin-top: 10px;
+	margin-left: 20px;
+	font-size: 17px;
+	max-width: 390px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	resize: none;
+}
+
+#sm3>#replyView_box {
+	width: 390px;
+	height: 200px;
+	margin-top: 10px;
+	margin-left: 20px;
+	font-size: 17px;
+	max-width: 390px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	resize: none;
+}
+
+#sm4>#reservationView_box {
+	width: 390px;
+	height: 200px;
+	margin-top: 10px;
+	margin-left: 20px;
+	font-size: 17px;
+	max-width: 390px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	resize: none;
+}
+
+#alink {
+	color: #f9f9f9;
+	float: right;
+	margin-top: 5px;
+	margin-right: 20px;
+	font-size: 15px;
+}
+
+table {
+	width: 440px;
+	border-collapse: collapse;
+	border-bottom: 2px solid gray;
+	text-align: center;
+}
+
+th {
+	height: 39px;
+	background-color: #f3f3f3;
+}
+
+th:first-child {
+	width: 300px;
+}
+
+td {
+	border-bottom: 2px solid #f3f3f3;
+	border-top: 2px solid #f3f3f3;
+	text-align: center;
+	height: 30px;
+	font-weight: bold;
+}
+
+tr:nth-child(2n+1) {
+	background-color: white;
+}
+
+tr:last-child {
+	border-bottom: none;
+}

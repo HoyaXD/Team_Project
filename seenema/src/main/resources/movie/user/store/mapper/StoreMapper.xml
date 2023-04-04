@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.green.seenema.user.store.mapper.StoreMapper">
+
+	<!-- 장바구니 담기 -->
+	<insert id="addCart">
+		INSERT INTO cart_tbl (productCode, productCount, id) 
+		VALUES (#{cart.productCode}, #{cart.productCount}, #{cart.id});
+	</insert>
+
+	<!-- 제품 상세보기 -->
+	<select id="getProductInfo" resultType="ProductVO">
+		SELECT * FROM product_tbl WHERE productCode = #{productCode};
+	</select>
+
+	<!-- 장바구니에 이미 존재하는지 체크 -->
+	<select id="checkCart" resultType="_int">
+		SELECT COUNT(*) FROM cart_tbl WHERE id = #{id} AND productCode = #{productCode};
+	</select>
+	
+	<!-- 장바구니 목록 -->
+	<select id="getCartList" resultType="CartVO">
+		SELECT 
+			ct.cartCode, pt.productCode, pt.productImage, pt.productName, pt.productInfo, pt.price, 
+			ct.productCount, (pt.price * ct.productCount) AS totalPrice, ct.id
+		FROM seenema.product_tbl pt RIGHT JOIN seenema.cart_tbl ct 
+		ON pt.productCode  = ct.productCode WHERE id = #{id};
+	</select>
+	
+	<!-- 장바구니 수량 수정 -->
+	<update id="updateProductCount">
+		UPDATE 
+			cart_tbl 
+		SET 
+			productCount = #{productCount} 
+		WHERE 
+			productCode = #{productCode} AND id = #{id}; 
+	</update>
+	
+	<!-- 장바구니 물품 삭제 -->
+	<delete id="deleteProduct">
+		DELETE FROM cart_tbl WHERE productCode = #{productCode} AND id = #{id};
+	</delete>
+	
+	<!-- 상품목록 가져오기 -->
+	<select id="getProductList" resultType="ProductVO">
+		SELECT * FROM product_tbl ORDER BY price DESC;
+	</select>
+</mapper>

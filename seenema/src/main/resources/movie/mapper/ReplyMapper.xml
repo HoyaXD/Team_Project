@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.green.seenema.mapper.ReplyMapper">
+
+	<!-- 댓글 등록 -->
+	<insert id="regReply">
+		INSERT INTO reply_tbl (id, movieCode, comment, rate) VALUES (#{id}, #{movieCode}, #{comment}, #{rate});
+	</insert>
+	
+	<!-- 댓글 목록 가져오기 -->
+	<select id="getReplyList" resultType="org.green.seenema.vo.ReplyVO">
+		SELECT * FROM reply_tbl WHERE movieCode = #{movieCode} ORDER BY regDate DESC LIMIT #{count}, 10;
+	</select>
+	
+	<!-- 댓글 수정 상세보기 -->
+	<select id="getReplyInfo" resultType="org.green.seenema.vo.ReplyVO">
+		SELECT * FROM reply_tbl WHERE replyCode = #{replyCode};
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply">
+		UPDATE reply_tbl SET comment = #{comment}, rate = #{rate} WHERE replyCode = #{replyCode};
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply">
+		DELETE FROM reply_tbl WHERE replyCode = #{replyCode};
+	</delete>
+	
+	<!-- 댓글 갯수 -->
+	<select id="getReplyCount" resultType="int">
+		SELECT COUNT(*) FROM reply_tbl WHERE movieCode = #{movieCode};
+	</select>
+</mapper>

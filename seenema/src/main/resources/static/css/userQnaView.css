@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+
+main{
+	width: 1300px;
+	min-height: 800px;
+	/* border: 1px solid red; */
+	margin: 30px auto;
+	display: flex;
+}
+footer p{
+	color: white;
+}
+
+.sideBar{
+	width: 200px;
+	/* border: 1px solid blue; */
+	margin-left: 100px;
+	margin-right: 50px;
+}
+.sideBarMenu{
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 3px;
+	/* border: 1px solid red; */
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.sideBarMenu:hover{
+	background-color: #FB4357;
+	color: white;
+}
+
+.qnaSection{
+	width: 800px;
+	min-height: 500px;
+	/* border: 1px solid red; */
+}
+
+.pageBigTitle{
+	/* width: 800px; */
+	font-weight: bold;
+	font-size: 25px;
+	margin: 5px auto;
+	
+}
+
+.pageSmallTitle{
+	/* width: 800px; */
+	padding: 10px 0;
+}
+
+.qnaTable{
+	width: 800px;
+	border-collapse: collapse;
+	margin: 0 auto;
+	/* border: 1px solid blue; */
+}
+.tableWrap{
+	min-height: 1000px;
+	border-bottom: 2px solid gainsboro;
+}
+thead{
+	background-color: #F8F8F8;
+}
+
+th{
+	border-top: 2px solid gainsboro;
+	border-bottom: 2px solid gainsboro;
+	padding: 10px 0;
+	text-align: center;
+	/* border: 1px solid black; */
+}
+
+td{
+	height: 50px;
+	color: #666666;
+}
+td > a{
+	color: #666666;
+}
+td > a:hover{
+	font-weight: bold;
+	border-bottom: 2px solid #666666;
+}
+
+td:nth-child(2){
+	padding-left: 10px;
+}
+
+td > a:hover{
+	font-weight: bold;
+	border-bottom: 2px solid #666666;
+}
+th:nth-child(1),
+td:nth-child(1){
+	width: 80px;
+	text-align: center;	
+}
+th:nth-child(2),
+td:nth-child(2){
+	width: 400px;
+}
+
+th:nth-child(3),
+td:nth-child(3){
+	width: 120px;
+	text-align: center;
+}
+th:nth-child(4),
+td:nth-child(4){
+	width: 100px;
+	text-align: center;
+}
+th:nth-child(5),
+td:nth-child(5){
+	width: 100px;
+	text-align: center;
+}
+
+/* 페이징 */
+.beforeAfterWrap{
+	width: 650px; 
+	/* border: 1px solid gainsboro; */
+	display: flex;
+	min-height: 40px;
+	font-size: 12px;
+	margin: 10px auto;
+}
+.pageCount{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 13px;
+	margin-right: 5px;
+}
+
+.noBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	color: gainsboro;
+	user-select: none;
+	margin-left: 50px;
+}
+.prevBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 50px;
+}
+.nextBtn{
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	/* border: 0.1px solid gainsboro; */
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.wrap{
+	display: flex;
+}
+.regQnaBtnWrap{
+	margin-left: auto;
+}
+#regQnaBtn{
+	line-height: 40px;
+	cursor: pointer;
+	background-color: #3d3d3d;
+	color: white;
+	padding: 3px 10px;
+	border-radius: 5px;
+	text-align: right;
+	user-select: none;
+}
+
+.ad > img{
+	width: 200px;
+}

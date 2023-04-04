@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.green.seenema.mapper.UserNoticeMapper">
+	<!-- 공지 목록 -->
+	<select id="getNoticeList" resultType="NoticeVO">
+		SELECT * FROM notice_tbl ORDER BY noticeCode DESC LIMIT #{count}, 20;
+	</select>
+	
+	<!-- 공지 갯수(페이지네이션) -->
+	<select id="getNoticeCount" resultType="int">
+		SELECT COUNT(*) FROM notice_tbl;
+	</select>
+	
+	<!-- 공지 상세보기 -->
+	<select id="getNoticeInfo" resultType="NoticeVO">
+		SELECT * FROM notice_tbl WHERE noticeCode = #{noticeCode};
+	</select>
+	
+	<!-- 공지 이전글 -->
+	<select id="getPrevContent" resultType="NoticeVO">
+		SELECT * FROM notice_tbl 
+		WHERE noticeCode = (SELECT MAX(noticeCode) FROM notice_tbl WHERE noticeCode &lt; #{noticeCode});  
+	</select>
+	
+	<!-- 공지 다음글 -->
+	<select id="getNextContent" resultType="NoticeVO">
+		SELECT * FROM notice_tbl 
+		WHERE noticeCode = (SELECT MIN(noticeCode)FROM notice_tbl WHERE noticeCode &gt; #{noticeCode});  
+	</select>
+	
+	<!-- 공지 조회수 + -->
+	<update id="plusView">
+		UPDATE notice_tbl nt SET hit = (nt.hit + 1) WHERE noticeCode = #{noticeCode};
+	</update>
+	
+	<!-- Q&A 목록 -->
+	<select id="getQnaList" resultType="QnaVO">
+		SELECT * FROM qna_mtbl ORDER BY qcode DESC LIMIT #{count}, 20;
+	</select>
+	
+	<!-- Q&A 상세보기 -->
+	<select id="getQnaInfo" resultType="QnaVO">
+		SELECT * FROM qna_mtbl WHERE qcode = #{qcode};
+	</select>
+	
+	<!-- Q&A 삭제 -->
+	<delete id="deleteQna">
+		DELETE FROM qna_mtbl WHERE qcode = #{qCode};
+	</delete>
+	
+	<!-- Q&A 페이징 -->
+	<select id="getQnaCount" resultType="int">
+		SELECT COUNT(*) FROM qna_mtbl;
+	</select>
+	
+	<!-- 제목 조회 -->
+	<select id="searchByTitleList" resultType="NoticeVO">
+		SELECT * FROM notice_tbl WHERE title LIKE CONCAT('%', #{keyword}, '%') ORDER BY noticeCode DESC LIMIT #{count}, 20;
+	</select>
+	
+	<!-- 내용 조회 -->
+	<select id="searchByContentsList" resultType="NoticeVO">
+		SELECT * FROM notice_tbl WHERE contents LIKE CONCAT('%', #{keyword}, '%') ORDER BY noticeCode DESC LIMIT #{count}, 20;
+	</select>
+	
+	<!-- Q&A 등록 -->
+	<insert id="regQna">
+		INSERT INTO qna_mtbl (title, contents, id) VALUES (#{title}, #{contents}, #{id});
+	</insert>
+	
+	<!-- 영화관 정보 -->
+	<select id="getTheaterInfo" resultType="theaterVO">
+		SELECT * FROM theater_tbl WHERE theaterName = #{theaterName};
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="getSearchByTitleCount" resultType="int">
+		SELECT COUNT(*) FROM notice_tbl WHERE title LIKE CONCAT('%', #{keyword}, '%');
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="getSearchByContentsCount" resultType="int">
+		SELECT COUNT(*) FROM notice_tbl WHERE contents LIKE CONCAT('%', #{keyword}, '%');
+	</select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.green.seenema.mapper.AdminMainPageMapper">
+
+<!-- 금일 기준 현재 상영중인 영화 출력 -->
+
+	<select id="todayMainMovieCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM movie_tbl
+		WHERE start_date &lt;= CURDATE() AND end_date &gt;= CURDATE()
+	</select>
+	
+	<select id="getTodayEndMovieCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM movie_tbl
+		WHERE end_date = CURDATE()
+	</select>
+	
+	<select id="getTodayReservationCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM reservation_tbl
+		WHERE movieDate = CURDATE()
+	</select>
+	
+	<select id="getTodayReservationCancelCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM reservation_tbl
+		WHERE movieDate = CURDATE() AND status != 1
+	</select>
+	
+	<select id="getTodayQnaWaitingCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM qna_mtbl
+		WHERE status = 0
+	</select>
+	
+	<select id="getTodayQnaCompleteCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM qna_mtbl
+		WHERE status = 1
+	</select>
+	
+	<select id="getTodayProductSalesCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM order_tbl
+		WHERE DATE(orderDate) = CURDATE()
+	</select>
+	
+	<select id="getTodayProductCancelCount" resultType="int">
+		SELECT COUNT(*) as total_count FROM order_tbl
+		WHERE DATE(orderDate) = CURDATE() AND status != 1
+	</select>
+	
+
+</mapper>

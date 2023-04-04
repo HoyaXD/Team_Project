@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+*{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+}
+
+footer p{
+	color: white;
+}
+
+.container {
+	width: 1000px;
+	margin: 30px auto;
+}
+
+.imageWrap {
+  display: block; /* 이미지를 감싸는 div를 블록 요소로 지정 */
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+.topWrap{
+	width: 1000px;
+	margin: 20px auto;
+	display: flex;
+	padding: 10px;
+	border-top: 2px solid gainsboro;
+	border-bottom: 2px solid gainsboro;
+	background-color: #e8e8e8;
+}
+.title{
+	font-weight: bold;
+}
+.date{
+	margin-left: auto;
+}
+
+.goListBtn{
+	margin: 10px 10px 0 0;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #1f1f1f;
+	margin-left: auto;
+	color: white;
+	cursor: pointer;
+}

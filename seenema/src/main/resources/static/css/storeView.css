@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+
+
+/* header{
+	width: 1300px;
+	height: 150px;
+	border: solid 1px black;
+	margin: 0 auto;
+} */
+
+footer p{
+	color: white;
+}
+
+.blackColor{
+	width: 100%;
+	background-color: black;
+}
+
+.topImageWrap{
+	width: 2200px;
+	display: flex;
+	margin: 0 auto;
+    justify-content: center;
+    
+}
+
+#topImage{
+	width: 2200px;
+	max-height: 296px;
+}
+.contents{
+	width: 1300px;
+	margin: 0 auto;
+}
+.navBar{
+	width: 1300px;
+	position: sticky;
+	top:0;
+	z-index: 1;
+	border-bottom: 2px solid gainsboro;
+	background-color: white;
+}
+
+.menuBar{
+	display: flex;
+	justify-content: center;
+	left: 0;
+	right: 0;
+}
+
+.menuBar > li > a{
+	display: block;
+	width: 300px;
+	height: 50px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 50px;
+	color: gray;
+}
+
+#best{
+	border-bottom: "3px solid black";
+	color: "black";
+}
+
+.sectionTitle{
+	width: 900px;
+	margin-top: 50px;
+	margin: 30px auto;
+	padding: 20px 15px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #f7f7f7;
+}
+.itemWrap{
+	width: 900px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 0 auto;
+	justify-items: center;
+}
+.item{
+	text-align: center;
+	margin-bottom: 30px;
+	transition: transform 300ms ease-in-out;
+}
+.item:hover{
+    transform: scale(1.07, 1.07);
+}
+.item > img{
+	width: 300px;
+	height: 250px;
+}
+
+
+.item h4{
+	margin: 10px 0;
+}
+.item p{
+	margin: 5px 0;
+	font-size: 12px;
+	color: gray;
+}
+
+.item .price{
+	margin: 5px 0;
+	font-weight: bold;
+}
+
+.absoluteBtnWrap{
+	position: fixed;
+	right: 25%;
+	bottom: 10%;
+}
+.nowReservBtn{
+	display: inline-block;
+	width: 130px;
+	line-height: 20px;
+	padding: 14px 15px;
+	text-align: center;
+	border-radius: 30px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	transition: right 0.4s;
+	background-image: linear-gradient(to left, rgb(255, 115, 86), rgb(251, 67, 87));
+	box-shadow: 3px 3px 3px gray;
+}
+.scrollTopBtn{
+	display: inline-block;
+	border: 2px solid gainsboro;
+	border-radius: 50%;
+	font-size: 30px;
+	line-height: 35px;
+	padding: 7px 15px;
+	cursor: pointer;
+	color: gray;
+	background: white;
+	box-shadow: 3px 3px 3px gray;
+}

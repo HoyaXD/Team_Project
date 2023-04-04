@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+
+main{
+	width: 1300px;
+	min-height: 800px;
+	/* border: 1px solid red; */
+	margin: 30px auto;
+	display: flex;
+}
+footer p{
+	color: white;
+}
+.sideBar{
+	width: 200px;
+	/* border: 1px solid blue; */
+	margin-left: 100px;
+	margin-right: 50px;
+}
+.sideBarMenu{
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 3px;
+	/* border: 1px solid red; */
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.sideBarMenu:hover{
+	background-color: #FB4357;
+	color: white;
+}
+
+.pageBigTitle{
+	/* width: 800px; */
+	font-weight: bold;
+	font-size: 25px;
+	margin: 5px auto;
+	
+}
+.pageSmallTitle{
+	padding: 10px 0;
+}
+.ticketImage{
+	position: relative;
+	width: 100%;
+	height: 400px;
+	background-image: url("../images/backgroundTicket.gif");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.theaterWrap{
+	width: 800px;
+	min-height: 1200px;
+}
+
+.ad > img{
+	width: 200px;
+}
+
+.theaterTopWrap{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 700px;
+	margin: 50px auto;
+	display: flex;
+	justify-content: space-around;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+}
+.theaterBottomWrap{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 700px;
+	display: flex;
+	margin: 100px auto;
+	justify-content: space-around;
+}
+.place{
+	color: gray;
+	cursor: pointer;
+	padding: 10px 20px;
+}
+
+.place{
+	color: white;
+	font-weight: bold;
+}
+
+.wrap > .item{
+	width: 90px;
+	font-size: 12px;
+	color: gray;
+	cursor: pointer;
+	text-align: center;
+	margin: 15px 0;
+	font-weight: bold;
+}
+
+.item.on{
+	color: white;
+	font-weight: bold;
+}
+
+.placeTitle{
+	font-size: 20px;
+	border-top: 2px solid gainsboro;
+	font-weight: bold;
+	padding: 30px 0;
+	text-align: center;
+}
+.theaterPhotoWrap{
+	margin-top: 10px;
+	position: relative;
+}
+.theaterPhoto{
+	width: 800px;
+}
+
+.infoWrap{
+	padding: 20px;
+	width: 100%;
+	position: absolute;
+	background-color: black;
+	bottom: 5px;
+	opacity: 0.7;
+}
+
+.infoWrap > div{
+	color: white;
+	font-weight: bold;
+}
+
+.theaterAddress{
+	margin-bottom: 10px;
+}
+
+.markerName{
+	font-weight: bold;
+}
+

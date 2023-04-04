@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.green.seenema.mapper.ProductCRUDMapper">
+	<!-- 상품등록 -->
+	<insert id="insert">
+		INSERT INTO seenema.product_tbl (productName, price, productInfo, productImage, productSales, category) 
+		VALUES(#{productName}, #{price}, #{productInfo}, #{productImage}, #{productSales}, #{category});
+	</insert>
+	
+	<!-- 상품조회 -->
+	<select id="getList" resultType="org.green.seenema.vo.ProductVO">
+		SELECT * FROM seenema.product_tbl ORDER BY productCode DESC LIMIT #{param1}, 10; 
+	</select>
+	
+	<!-- 상품cnt -->
+	<select id="getCnt" resultType="int">
+		select count(*) as totalCount from product_tbl;
+	</select>
+	
+	<!-- 코드로 상품조회하기 -->
+	<select id="selectOne" resultType="org.green.seenema.vo.ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productCode = #{param1}
+	</select>
+	
+	<!-- 상품정보수정 -->
+	<update id="update">
+		UPDATE seenema.product_tbl 
+		SET productName=#{productName}, price=#{price}, productInfo=#{productInfo}, productImage=#{productImage}, productSales=#{productSales}, category=#{category} 
+		WHERE productCode=#{productCode}
+	</update>
+	
+	<!-- 상품정보삭제 -->
+	<delete id="delete">
+		DELETE FROM seenema.product_tbl
+		WHERE productCode=#{param1};
+	</delete>
+	
+	<!-- 상품명으로 상품조회하기 -->
+	<select id="getListByName" resultType="org.green.seenema.vo.ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName LIKE #{param1} ORDER BY productSales DESC LIMIT #{param2}, 10
+	</select>
+	
+	<!-- 상품명으로 상품조회 개수-->
+	<select id="getListByNameCnt" resultType="int">
+		select count(*) from product_tbl WHERE productName LIKE #{param1} ORDER BY productSales;
+	</select>
+	
+	<!-- 가격대로 상품조회하기 -->
+	<select id="getListByPrice" resultType="org.green.seenema.vo.ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY price ASC LIMIT #{param3}, 10]]>
+	</select>
+	
+	<!-- 가격대로 상품조회 개수 -->
+	<select id="productByPriceCnt" resultType="int">
+		<![CDATA[ SELECT count(*) FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY price ASC]]>
+	</select>
+	
+	<!-- 카테고리 조회 cnt -->
+	<select id="productByCategoryCnt" resultType="int">
+		SELECT count(*) FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY productSales DESC
+	</select>
+	
+	<!-- 카테고리 조회하기 -->
+	<select id="getListByCategory" resultType="org.green.seenema.vo.ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY productSales DESC LIMIT #{param2}, 10
+	</select>
+	
+	<!-- 낮은 가격 순으로 조회하기 -->
+	<select id="getListByLowPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl ORDER BY price ASC LIMIT #{param1}, 10;
+	</select>
+	
+	<!-- 낮은 가격 순으로 조회 cnt-->
+	<select id="listByLowPriceCnt" resultType="int">
+		SELECT count(*) FROM seenema.product_tbl ORDER BY price ASC;
+	</select>
+	
+	<!-- 높은 가격 순으로 조회하기 -->
+	<select id="getListByHighPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl ORDER BY price DESC;
+	</select>
+	
+	<!-- 판매량 낮은 순으로 조회하기 -->
+	<select id="getListByLowSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl ORDER BY productSales ASC;
+	</select>
+	
+	<!-- 판매량 높은 순으로 조회하기 -->
+	<select id="getListByHighSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl ORDER BY productSales DESC;
+	</select>
+	
+	<!-- 상품명 > 카테고리 별 정렬 -->
+	<select id="getListNameCategory" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName LIKE #{param1} and category = #{param2} ORDER BY productSales DESC
+	</select>
+	
+	<!-- 상품명 > 낮은 가격순 정렬 -->
+	<select id="getListNameLowPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName Like #{param1} ORDER BY price ASC;
+	</select>
+	
+	<!-- 상품명 > 높은 가격순 정렬 -->
+	<select id="getListNameHighPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName Like #{param1} ORDER BY price DESC;
+	</select>
+	
+	<!-- 상품명 > 낮은 판매량 정렬 -->
+	<select id="getListNameLowSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName Like #{param1} ORDER BY productSales ASC;
+	</select>
+	
+	<!-- 상품명 > 높은 판매량 정렬 -->
+	<select id="getListNameHighSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE productName Like #{param1} ORDER BY productSales DESC;
+	</select>
+	
+	<!-- 가격대 > 카테고리 정렬 -->
+	<select id="geListPriceCategory" resultType="ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} and category = #{param3} ]]>
+	</select>
+	
+	<!-- 가격대 > 낮은 가격  정렬 -->
+	<select id="getListPriceLowPrice" resultType="ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY price ASC ]]>
+	</select>
+	
+	<!-- 가격대 > 높은 가격 순 정렬 -->
+	<select id="getListPriceHighPrice" resultType="ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY price DESC ]]>
+	</select>
+	
+	<!-- 가격대 > 낮은 판매량 정렬 -->
+	<select id="getListPriceLowSales" resultType="ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY productSales ASC ]]>
+	</select>
+	
+	<!-- 가격대 > 높은 판매량 정렬 -->
+	<select id="getListPriceHighSales" resultType="ProductVO">
+		<![CDATA[ SELECT * FROM seenema.product_tbl WHERE price >= #{param1} and price <= #{param2} ORDER BY productSales DESC ]]>
+	</select>
+	
+	<!-- 카테고리 > 낮은 가격 순 정렬 -->
+	<select id="getListCategoryLowPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY price ASC
+	</select>
+	
+	<!-- 카테고리 > 높은 가격 순 정렬 -->
+	<select id="getListCategoryHighPrice" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY price DESC
+	</select>
+	
+	<!-- 카테고리 > 낮은 판매량 순 정렬 -->
+	<select id="getListCategoryLowSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY productSales ASC
+	</select>
+	
+	<!-- 카테고리 > 높은 판매량 순 정렬 -->
+	<select id="getListCategoryHighSales" resultType="ProductVO">
+		SELECT * FROM seenema.product_tbl WHERE category LIKE #{param1} ORDER BY productSales DESC
+	</select>
+	
+	<!--  -->
+</mapper>

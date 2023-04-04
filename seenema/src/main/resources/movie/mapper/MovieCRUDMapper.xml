@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 영화 등록/조회/삭제 mapper -->
+<mapper namespace="org.green.seenema.mapper.MovieCRUDMapper">
+	
+	<!-- 등록 -->
+	<insert id="insertMovie">
+		INSERT INTO seenema.movie_tbl
+			(movieTitle, genre, plot, director, actors, viewAge, releaseDate, theater, runningTime, postFileName, previewURL, hit, playingTime, start_date, end_date) 
+		VALUES
+			(#{movieTitle}, #{genre}, #{plot}, #{director}, #{actors}, #{viewAge}, #{releaseDate}, #{theater}, #{runningTime}, #{postFileName}, #{previewURL}, #{hit}, #{playingTime}, #{start_date}, #{end_date})
+	</insert>
+	
+	<!-- 전체 조회 -->
+	<select id="getList" resultType="MovieVO">
+		SELECT *
+		FROM seenema.movie_tbl order by movieCode DESC LIMIT #{param1}, 10;
+	</select>
+	
+	<!-- 전체조회 cnt -->
+	<select id="getListNum" resultType="MovieVO">
+		SELECT *
+		FROM seenema.movie_tbl order by movieCode DESC LIMIT #{param1}, 10;
+	</select>
+	
+	<!-- 영화 코드로 조회 -->
+	<select id="selectOne" resultType="MovieVO">
+		SELECT * FROM seenema.movie_tbl WHERE movieCode = #{param1};
+	</select>
+	
+	<!-- 영화 제목으로 조회 cnt -->
+	<select id="titleCnt" resultType="int">
+		SELECT count(*) FROM seenema.movie_tbl WHERE movieTitle LIKE #{param1}
+	</select>
+	
+	<!-- 영화 제목으로 조회 -->
+	<select id="getListByTitle" resultType="MovieVO">
+		SELECT * FROM seenema.movie_tbl WHERE movieTitle LIKE #{param1} LIMIT #{param2}, 10;
+	</select>
+	
+	<!-- 영화 개봉일로 조회 -->
+	<select id="getListByreleaseDate" resultType="MovieVO">
+		 <![CDATA[ 
+			SELECT * FROM seenema.movie_tbl
+			WHERE releaseDate >= #{param1} and releaseDate <= #{param2}
+			ORDER BY releaseDate ASC LIMIT #{param3}, 10 
+		]]>
+	</select>
+	
+	<!-- 영화 개봉일로 조회 cnt-->
+	<select id="dateCnt" resultType="int">
+		 <![CDATA[ 
+			SELECT count(*) FROM seenema.movie_tbl
+			WHERE releaseDate >= #{param1} and releaseDate <= #{param2} 
+		]]>
+	</select>
+	
+	<!-- 제목+개봉일로 조회 -->
+	<select id="getListByTitleDate" resultType="MovieVO">
+		 <![CDATA[ 
+			SELECT * FROM seenema.movie_tbl
+			WHERE movieTitle LIKE #{param1} and releaseDate >= #{param2} and releaseDate <= #{param3} LIMIT #{param4}, 10; 
+		]]>
+	</select>
+	
+	<!-- 제목+개봉일로 조회 -->
+	<select id="titleDateCnt" resultType="int">
+		 <![CDATA[ 
+			SELECT count(*) FROM seenema.movie_tbl
+			WHERE movieTitle LIKE #{param1} and releaseDate >= #{param2} and releaseDate <= #{param3}; 
+		]]>
+	</select>
+	
+	<!-- 영화 정보 수정 -->
+	<update id="update">
+		UPDATE seenema.movie_tbl SET movieTitle=#{movieTitle}, genre=#{genre}, plot=#{plot}, 
+				director=#{director}, actors=#{actors}, viewAge=#{viewAge}, 
+				releaseDate=#{releaseDate}, runningTime=#{runningTime}, 
+				postFileName=#{postFileName}, previewURL=#{previewURL}, theater=#{theater},
+				playingTime=#{playingTime}, start_date=#{start_date}, end_date=#{end_date} 
+			WHERE movieCode=#{movieCode};
+	</update>
+	
+	<!-- 영화 정보 삭제 -->
+	<delete id="delete">
+		DELETE FROM seenema.movie_tbl WHERE movieCode=#{param1};
+	</delete>
+	
+	<!-- 영화개수 조회 -->
+	<select id="movieCnt" resultType="int">
+		SELECT count(*)
+		FROM seenema.movie_tbl order by movieCode DESC;
+	</select>
+</mapper>

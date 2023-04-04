@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+main{
+	width: 1300px;
+	min-height: 1050px;
+	/* border: 1px solid red; */
+	margin: 30px auto;
+	display: flex;
+	
+}
+footer p{
+	color: white;
+}
+
+.sideBar{
+	width: 200px;
+	/* border: 1px solid blue; */
+	margin-left: 100px;
+	margin-right: 50px;
+}
+.section{
+	width: 800px;
+	/* border: 1px solid green; */
+}
+
+.pageBigTitle{
+	font-weight: bold;
+	font-size: 25px;
+	margin: 5px auto;
+}
+
+.pageSmallTitle{
+	padding: 10px 0;
+}
+
+.sideBarMenu{
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 3px;
+	/* border: 1px solid red; */
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.sideBarMenu:hover{
+	background-color: #FB4357;
+	color: white;
+}
+
+.qnaInfoWrapTop{
+	display: flex;
+	border-top: 2px solid gainsboro;
+}
+
+.qnaInfoWrapTop > div{
+	background-color: #F8F8F8;
+	font-size: 14px;
+	padding: 10px 0;
+}
+
+.qnaInfoWrapTop > div:nth-child(1){
+	padding-left: 10px;
+	font-weight: bold;
+	width: 550px;
+	line-height: 30px;
+}
+.qnaInfoWrapTop > div:nth-child(2){
+	text-align: center;
+	width: 125px;
+}
+.qnaInfoWrapTop > div:nth-child(3){
+	text-align: center;
+	width: 125px;
+}
+.qnaRegDate{
+	line-height: 30px;
+}
+
+
+.bold{
+	font-weight: bold;
+}
+
+.qnaInfoContent{
+	padding: 20px 10px;
+	min-height: 300px;
+	border-bottom: 1px solid gainsboro;
+}
+
+.adminAnswer{
+	padding: 20px 10px;
+	border-bottom: 2px solid gainsboro;
+	
+}
+.goBtnWrap{
+	margin: 20px 0;
+	text-align: right;
+}
+#goListBtn{
+	padding: 5px 10px;
+	border: 1px solid black;
+	cursor: pointer;
+	color: white;
+	background-color: black;
+}
+
+#deleteQnaBtn{
+	width: 80px;
+	height: 25px;
+	line-height: 25px;
+	cursor: pointer;
+	color: white;
+	background-color: #666666;
+	margin: 0 auto;
+}
+
+.adminAnswerTitle{
+	border-bottom: 1px solid gainsboro;
+	padding: 10px;
+	font-weight: bold;
+	background-color: #F8F8F8;
+}
+
+.qnaInfoWrap{
+	border-right: 1px solid gainsboro;
+	border-left: 1px solid gainsboro;
+}
+
+.ad > img{
+	width: 200px;
+}

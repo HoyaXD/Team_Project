@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+	color: black;
+}
+.container{
+	width: 1300px;
+	margin: 0 auto;
+}
+
+/* 체크박스 라벨 */
+label{
+	padding: 2px 8px;
+	border: solid 1px black;
+	font-size: 20px;
+	font-weight: bolder;
+	color: gray;
+	border: 1px solid gray;
+	background-color: white;
+	user-select: none;
+	cursor: pointer;
+}
+
+input[type="checkbox"]{
+	display: none;
+}
+
+input[type="checkbox"]:checked ~ label{
+	background-color: #FF243E;
+	color: white;
+	border: none;
+}
+#itemList{
+	margin-top: 10px;
+	border-top: 3px solid black;
+	text-align: center;
+	min-height: 803px;
+	border-right: 1px solid gainsboro;
+	border-left: 1px solid gainsboro;
+}
+
+
+/* 리스트 컬럼 */
+.listHead{
+	display: flex;
+	background-color: #f0f0f0;
+	height: 50px;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.listHead > div:nth-child(1){
+	width: 5%;
+	/* border: 1px solid red; */
+	text-align: center;
+}
+/* 상품명 */
+.listHead > div:nth-child(2){
+	width: 35%;
+	/* border-right: 1px solid black; */
+}
+
+/* 판매금액 */
+.listHead > div:nth-child(3){
+	width: 15%;
+	/* border-right: 1px solid black; */
+}
+/* 수량 */
+.listHead > div:nth-child(4){
+	width: 10%;
+	/* border-right: 1px solid black; */
+}
+
+/* 구매금액 */
+.listHead > div:nth-child(5){
+	width: 15%;
+	/* border-right: 1px solid black; */
+}
+
+/* 선택 */
+.listHead > div:nth-child(6){
+	width: 20%;
+	/* border-right: 1px solid black; */
+}
+
+
+/* 아이템 리스트 */
+.item{
+	display: flex;
+	width: 1300px;
+	height: 150px;
+	border-bottom: 1px solid gray;
+}
+
+.item > div:nth-child(1){
+	width: 5%;
+	line-height: 150px;
+	text-align: center;
+}
+/* 사진 */
+.item > div:nth-child(2){
+	width: 15%;
+	/* border-right: 1px solid black; */
+	text-align: center;
+}
+
+.item > div:nth-child(2) > img{
+	width: 160px;
+	height: 148px;
+}
+
+/* 상품명, 상품정보 */
+.item > div:nth-child(3){
+	padding-top: 50px;
+	width: 20%;
+	/* border-right: 1px solid black; */
+}
+#productName{
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+#productInfo{
+	color: gray;
+}
+/* 판매금액 */
+.item > div:nth-child(4){
+	padding-top: 60px;
+	width: 15%;
+	/* border-right: 1px solid black; */
+}
+
+/* 수량 */
+.item > div:nth-child(5){
+	width: 10%;
+	/* border-right: 1px solid black; */
+}
+
+/* 구매금액 */
+.item > div:nth-child(6){
+	padding-top: 60px;
+	width: 15%;
+	/* border-right: 1px solid black; */
+}
+
+/* 바로 구매 */
+.item > div:nth-child(7){
+	width: 10%;
+	/* border-right: 1px solid black; */
+}
+
+/* 선택 */
+.item > div:nth-child(8){
+	width: 10%;
+	/* border-right: 1px solid black; */
+}
+
+.price, .prodTotalprice{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.won{
+	font-weight: bold;
+}
+
+.wrap{
+	width: 150px;
+	display: flex;
+	padding: 3px;
+	margin-top: 50px;
+}
+/* 제품 수량 */
+.count{
+	width: 50px;
+	border: solid 1px #bdc1c8;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	user-select: none;
+}
+
+/* 수량 수정버튼 ( + , - ) */
+.plusBtn, .minusBtn{
+	color: gray;
+	width: 20px;
+	height: 20px;
+	border: solid 1px #bdc1c8;
+	cursor: pointer;
+	user-select: none;
+}
+
+/* 수량변경 버튼 */
+.applyBtn{
+	width: 50px;
+	border: solid 1px #bdc1c8;
+	line-height: 40px;
+	height: 40px;
+	margin-left: 5px;
+	user-select: none;
+	cursor: pointer;
+}
+
+/* 바로구매 버튼 */
+.buyNowWrap > button{
+	margin-top: 50px;
+	margin-left: 30px;
+	border: none;
+	background: none;
+	width: 100px;
+	height: 40px;
+	font-weight: 900;
+	cursor: pointer;
+	color: white;
+	background-color: #4b4f56;
+	user-select: none;
+	border-radius: 5px;
+}
+
+/* 삭제버튼 */
+.deleteBtn{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	color: #bebebe;;
+	border: 1px solid #bebebe;
+	margin: 55px auto;
+	cursor: pointer;
+	user-select: none;
+}
+.bottomWrap{
+	display: flex;
+	border: 1px solid gainsboro;
+	padding: 10px;
+	min-height: 115px;
+}
+.priceInfoWrap{
+	width: 200px;
+	padding: 10px 10px 10px 40px;
+	margin-left: auto;
+}
+.selectDeleteBtn{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid gray;
+	border-radius: 5px;
+	font-size: 15px;
+	margin-top: 25px;
+	margin-left: 10px;
+	padding: 0 10px;
+	display: flex;
+	
+}
+.chong{
+	font-size: 25px;
+}
+/* 최종결제금액 */
+.calcPriceWrap{
+	display: flex;
+	font-size: 30px;
+	font-weight: bold;
+}
+.calcPriceWrap > div{
+	color: #FF243E;
+}
+
+.btnWrap{
+	min-height: 50px;
+	height: 50px;
+	margin: 10px 0;
+}
+.buyBtn{
+	width: 200px;
+	height: 50px;
+	background-color: #373e46;
+	color: white;
+	border-radius: 5px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+#emptyListWrap{
+	border-bottom: 1px solid #c7c7c7;
+	color: gray;
+	margin-bottom: 10px;
+	min-height: 803px;
+	line-height: 803px;
+}
+.emptyListCheckBox{
+	pointer-events: none;
+}
+
+.topTitle{
+	padding: 20px 0;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	background-color: gainsboro;
+	margin-top: 10px;
+}
+footer p{
+	color: white;
+}

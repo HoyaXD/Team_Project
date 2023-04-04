@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 영화관 등록/조회/삭제 mapper -->
+  
+ <mapper namespace="org.green.seenema.mapper.TheaterCRUDMapper">
+ 	<!-- 등록 -->
+ 	<insert id="insertTheater">
+ 		INSERT INTO seenema.theater_tbl(theaterPlace, theaterName, theaterAddress, theaterTel, seat_row, seat_column, <!-- latitude, longitude, --> theaterImage)
+		VALUES(#{theaterPlace}, #{theaterName}, #{theaterAddress}, #{theaterTel}, #{seat_row}, #{seat_column},<!--  #{latitude}, #{longitude}, --> #{theaterImage});
+ 	</insert>
+ 	
+ 	<!-- 조회 -->
+ 	<select id="getList" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT * FROM seenema.theater_tbl ORDER BY theaterCode DESC LIMIT #{param1}, 10;
+	</select>
+	
+	<!-- 단순조회 -->
+	<select id="getList2" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT * FROM seenema.theater_tbl;
+	</select>
+	
+	<!-- 영화관 cnt -->
+ 	<select id="theaterCnt" resultType="int">
+		SELECT count(*) FROM seenema.theater_tbl 
+	</select>
+	
+	<!-- 영화관 코드로 조회 -->
+	<select id="selectOne" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT * FROM seenema.theater_tbl where theaterCode = #{param1}
+	</select>
+	
+	<!-- 이름으로 조회 -->
+	<select id="getListByName" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT * FROM seenema.theater_tbl where theaterName LIKE #{param1} ORDER BY theaterCode DESC LIMIT #{param2}, 10
+	</select>
+	
+	<!-- 이름으로 조회 cnt -->
+	<select id="theaterNameCnt" resultType="int">
+		SELECT count(*) FROM seenema.theater_tbl where theaterName LIKE #{param1}
+	</select>
+	
+	<!-- 지역으로 조회 -->
+	<select id="getListByPlace" resultType="TheaterVO">
+		SELECT * FROM seenema.theater_tbl where theaterPlace LIKE #{param1} ORDER BY theaterCode DESC LIMIT #{param2}, 10;
+	</select>
+	
+	<!-- 지역으로 조회cnt -->
+	<select id="theaterPlaceCnt" resultType="int">
+		SELECT count(*) FROM seenema.theater_tbl where theaterPlace LIKE #{param1};
+	</select>
+	
+	<!-- 연락처로 조회 -->
+	<select id="getListByTel" resultType="TheaterVO">
+		SELECT * FROM seenema.theater_tbl where theaterTel LIKE #{param1} ORDER BY theaterCode DESC LIMIT #{param2}, 10;
+	</select>
+	
+	<!-- 연락처로 조회 cnt -->
+	<select id="theaterTelCnt" resultType="int">
+		SELECT count(*) FROM seenema.theater_tbl where theaterTel LIKE #{param1};
+	</select>
+	
+	<!-- 수정 -->
+	<update id="update">
+		UPDATE seenema.theater_tbl 
+		SET theaterPlace=#{theaterPlace}, theaterName=#{theaterName}, theaterAddress=#{theaterAddress}, 
+			theaterTel=#{theaterTel}, seat_row=#{seat_row}, seat_column=#{seat_column},
+			<!-- latitude=#{latitude}, longitude=#{longitude}, --> theaterImage=#{theaterImage}
+		WHERE theaterCode=#{theaterCode};
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+		DELETE FROM seenema.theater_tbl WHERE theaterCode=#{param1};
+	</delete>
+
+	<select id="getListGroupByPlace" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT theaterPlace, COUNT(theaterPlace) AS cnt FROM seenema.theater_tbl GROUP BY theaterPlace
+	</select>
+
+	<select id="getListWherePlace" resultType="org.green.seenema.vo.TheaterVO">
+		SELECT * FROM seenema.theater_tbl WHERE theaterPlace = #{place};
+	</select>
+
+</mapper>
